@@ -1,0 +1,19 @@
+services:
+  api:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      AMOS_API_TOKEN: ${AMOS_API_TOKEN:?Set a random AMOS_API_TOKEN in .env}
+      AMOS_DATABASE_PATH: /data/amos.sqlite3
+    volumes:
+      - amos-data:/data
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+volumes:
+  amos-data:
