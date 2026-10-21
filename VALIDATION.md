@@ -16,6 +16,8 @@ Validated on Windows with CPython 3.12.14 on 2026-10-21. This records evidence f
 | Actual `amos` console processes | Generate, show, review and export passed |
 | Real localhost Uvicorn HTTP server | Authentication, generation, unapproved export rejection, review and export passed |
 | Server restart | Approved export survived restart unchanged |
+| GitHub Linux matrix (Python 3.12 and 3.13) | Passed in both push and pull-request CI |
+| Docker build and running-container smoke test | Passed in GitHub CI |
 | Local Markdown links | Checked for existing targets |
 | YAML and issue-template metadata | Parsed; CI action pins, read permissions, loopback binding and read-only container configuration inspected |
 | Diff whitespace and basic credential-pattern scan | Clean; test tokens are synthetic |
@@ -24,7 +26,7 @@ Tests cover configuration and dotenv precedence, schema bounds and immutability,
 
 ## Limits of verification
 
-Docker Engine was unavailable locally. Dockerfile/Compose were inspected and parsed where applicable; container build/runtime verification is delegated to the committed GitHub CI container job. The GitHub Linux/Python 3.12/3.13 matrix is distinct from the local Windows result. Check actual Actions results before merging; committing CI is not evidence that it has passed remotely.
+Docker Engine was unavailable locally. After repository access was configured, the Linux Python 3.12/3.13 matrix and actual Docker build/container smoke test passed for implementation commit `acbc93108512de9874999f3b4c1e471e20852114` in both [push CI](https://github.com/candicehell/agentic-media-os/actions/runs/39678437595) and [pull-request CI](https://github.com/candicehell/agentic-media-os/actions/runs/39678463811). The published implementation tree was verified identical to the locally tested tree. These remote results complement the Windows checks above.
 
 The first advisory scan found the initial virtual environment's old bundled pip. It was upgraded; the clean locked environment was scanned again without vulnerability ignores. The initial test-client deprecation was fixed by using the supported httpx2 development dependency.
 
@@ -44,4 +46,4 @@ No live model, external research, n8n, MCP, platform publication, multi-user sec
 
 ## Maintainer actions before release
 
-Review and merge the branch, confirm MIT licensing intent, enable GitHub private vulnerability reporting, and inspect hosted CI/container results. Generate a private API token before API startup. Shared/remote production operation requires the hardening and recovery work in the roadmap.
+Review and merge the branch, confirm MIT licensing intent, enable GitHub private vulnerability reporting, and check that the latest PR checks remain green. Generate a private API token before API startup. Shared/remote production operation requires the hardening and recovery work in the roadmap.
