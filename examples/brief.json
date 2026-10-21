@@ -1,0 +1,17 @@
+{
+  "topic": "A practical podcast repurposing routine",
+  "audience": "Independent podcast producers",
+  "goal": "Choose one episode and prepare a short, reviewed newsletter draft.",
+  "sources": [
+    {
+      "id": "editorial-notes",
+      "title": "Example editorial notes (fictional)",
+      "text": "Our example team selects one useful lesson from each episode. The producer checks the transcript before turning that lesson into a newsletter. Every excerpt is reviewed against the recording before publication."
+    },
+    {
+      "id": "style-guide",
+      "title": "Example house style",
+      "text": "Use clear language and short paragraphs. Credit the guest when using their ideas. End with one practical action the reader can try."
+    }
+  ]
+}
