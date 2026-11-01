@@ -1,11 +1,11 @@
-FROM python:3.12-slim AS builder
+FROM python:3.15-slim AS builder
 WORKDIR /build
 RUN pip install --no-cache-dir uv==0.13.4
 COPY pyproject.toml uv.lock README.md LICENSE ./
 COPY src ./src
 RUN uv sync --frozen --no-dev --no-editable --python /usr/local/bin/python
 
-FROM python:3.12-slim
+FROM python:3.15-slim
 RUN groupadd --gid 10001 amos && useradd --uid 10001 --gid amos --no-create-home amos \
     && mkdir /data && chown amos:amos /data
 WORKDIR /app
